@@ -221,7 +221,7 @@
               [:option (cond->
                         {:key (:value language)}
                          (= (name (:value language)) preferred-language)
-                         (assoc :selected "selected"))
+                         (assoc :default-value "selected"))
                (:label language)])]]]]
 
                         ;; config.edn
@@ -250,7 +250,7 @@
               [:option (cond->
                         {:key (name format)}
                          (= format preferred-format)
-                         (assoc :selected "selected"))
+                         (assoc :default-value "selected"))
                (string/capitalize (name format))])]]]]
 
         [:div.it.sm:grid.sm:grid-cols-3.sm:gap-4.sm:items-start
@@ -273,7 +273,7 @@
               [:option (cond->
                         {:key format}
                          (= format custom-date-format)
-                         (assoc :selected "selected"))
+                         (assoc :default-value "selected"))
                format])]]]]
 
         [:div.it.sm:grid.sm:grid-cols-3.sm:gap-4.sm:items-start
@@ -293,7 +293,7 @@
               [:option (cond->
                         {:key (name workflow)}
                          (= workflow preferred-workflow)
-                         (assoc :selected "selected"))
+                         (assoc :default-value "selected"))
                (if (= workflow :now)
                  "NOW/LATER"
                  "TODO/DOING")])]]]]
