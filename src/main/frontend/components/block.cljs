@@ -2093,6 +2093,12 @@
 ;;                                            :ref? true
 ;;                                            :ref-child? true))]))))
 
+(defn display-children-as-class [properties]
+  (let [default-mode "bullet"
+        specified-mode (:display-children-as properties)]
+    ; don't remove the leading space!
+    (str " display-children-as--" (or specified-mode default-mode)))) 
+
 (rum/defcs block-container < rum/reactive
   {:init (fn [state]
            (let [[config block] (:rum/args state)
@@ -2156,6 +2162,7 @@
        :data-refs data-refs
        :data-refs-self data-refs-self
        :class (str uuid
+                   (display-children-as-class properties)
                    (when (and collapsed? has-child?) " collapsed")
                    (when pre-block? " pre-block")
                    (when (and card? (not review-cards?)) " shadow-xl"))
